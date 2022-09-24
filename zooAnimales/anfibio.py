@@ -1,15 +1,13 @@
-from zooAnimales.animal import Animal
-from gestion.zona import Zona
-from gestion.zoologico import Zoologico
+import zooAnimales.animal
 
 
-class Anfibio(Animal):
+class Anfibio(zooAnimales.animal.Animal):
     _listado = None
     ranas = 0
     salamandras = 0
 
     def __init__(self, nombre, edad, habitat, genero, colorPiel, venenoso):
-        super.__init__(nombre, edad, habitat, genero)
+        super().__init__(nombre, edad, habitat, genero, self)
         self._colorPiel = colorPiel
         self._venenoso = venenoso
 
@@ -36,10 +34,12 @@ class Anfibio(Animal):
     def cantidadAnfibios(self):
         return len(self._listado)
 
-    def crearRana(self, nombre, edad, genero):
-        self.ranas += 1
-        self.__init__(nombre, edad, "selva", genero, "rojo", True)
+    @staticmethod
+    def crearRana(nombre, edad, genero):
+        Anfibio.ranas += 1
+        return Anfibio(nombre, edad, "selva", genero, "rojo", True)
 
-    def crearSalamandras(self, nombre, edad, genero):
-        self.salamandras += 1
-        self.__init__(nombre, edad, "selva", genero, "negro y amarillo", False)
+    @staticmethod
+    def crearSalamandra(nombre, edad, genero):
+        Anfibio.salamandras += 1
+        return Anfibio(nombre, edad, "selva", genero, "negro y amarillo", False)

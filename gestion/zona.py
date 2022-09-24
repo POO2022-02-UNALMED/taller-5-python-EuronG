@@ -1,11 +1,12 @@
-from gestion.zoologico import Zoologico
+import gestion.zoologico
 
 
-class Zona(Zoologico):
-    def __init__(self, nombre, zoo):
+class Zona(gestion.zoologico.Zoologico):
+    def __init__(self, nombre, zoo=None):
+        super().__init__()
+        self._zoo = zoo
         self._animales = None
         self._nombre = nombre
-        self._zoo = [zoo]
 
     def getNombre(self):
         return self._nombre
@@ -33,4 +34,3 @@ class Zona(Zoologico):
 
     def cantidadAnimales(self):
         return len(self.getAnimales())
-

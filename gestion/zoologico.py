@@ -1,5 +1,5 @@
 class Zoologico:
-    def __init__(self, nombre, ubicacion):
+    def __init__(self, nombre=None, ubicacion=None):
         self._zonas = None
         self._nombre = nombre
         self._ubicacion = ubicacion
@@ -16,14 +16,15 @@ class Zoologico:
     def setUbicacion(self, ubicacion):
         self._ubicacion = ubicacion
 
+    def getZona(self):
+        return self._zonas
     def getZonas(self):
         return self._zonas
 
-    def setZonas(self, zonas):
+    def setZona(self, zonas):
         self._zonas = zonas
 
-
-    def agregarzonas(self, zona):
+    def agregarZonas(self, zona):
         if self._zonas is None:
             self._zonas = [zona]
         else:
